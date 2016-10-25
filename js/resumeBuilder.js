@@ -13,7 +13,7 @@ $('#header').prepend(formattedName);
 var bio = {
   'name': 'Charley Blewett',
   'role': 'Web Developer',
-  contact: {
+  'contact': {
     'Email': 'charley.blewett@gmail.com',
     'Mobile': '775-225-9390'
   }
