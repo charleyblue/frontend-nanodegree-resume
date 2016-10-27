@@ -14,7 +14,7 @@ var bio = {
     'twitter': '@charleyblue',
     'location': 'Reno, NV'
   },
-  'welcomeMessage': 'Web development is the central theme to my business. Building your online business presence to convey your message to your market is what I will help you achieve. Let\'s build',
+  'welcomeMessage': 'Website creation is the central theme to my business. Helping you Build your online business presence to convey your message to your market is what I will help you achieve. Let\'s build together!',
   'skills': ['HTML', 'CSS', 'JavaScript', 'Design'],
   'biopic': 'images/fry.jpg'
 };
@@ -23,10 +23,21 @@ bio.display = function() {
   var role = bio.role;
   var mobile = bio.contact.mobile;
   var email = bio.contact.email;
+  var github = bio.contact.github;
+  var twitter = bio.contact.twitter;
+  var location = bio.contact.location;
+  var welcomMessage = bio.welcomeMessage;
+  var skills = bio.skills;
+  var image = bio.biopic;
   var formattedName = HTMLheaderName.replace("%data%", myName);
   var formattedRole = HTMLheaderRole.replace("%data%", role);
-  $('#header').prepend(formattedRole);
-  $('#header').prepend(formattedName);
+  var formattedMobile = HTMLmobile.replace("%data%", mobile);
+  var formattedEmail = HTMLemail.replace("%data%", email);
+  var formattedGithub = HTMLgithub.replace("%data%", github);
+  var formattedTwitter = HTMLtwitter.replace("%data%", twitter);
+  var formattedLocation = HTMLlocation.replace("%data%", location);
+  $('#header').prepend(formattedName, formattedRole);
+  $('#topContacts').append(formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation);
 
 };
 
@@ -49,7 +60,7 @@ var education = {
   {'name': 'George Brown College',
   'location':'Toronto, Ontario, Canada',
   'degree': 'Programmable Logic Control Technician',
-  'majors': ['Ladder Logic', 'Timers', 'Counters'],
+  'majors': ['PLC Ladder Logic', 'Timers', 'Counters', 'I/O Racks'],
   'dates': '8/2016 - Current',
   'url': 'http://www.georgebrown.ca/'
 
