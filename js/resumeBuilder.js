@@ -16,7 +16,7 @@ var bio = {
   },
   'welcomeMessage': 'Website creation is the central theme to my business. Helping you Build your online business presence to convey your message to your market is what I will help you achieve. Let\'s build together!',
   'skills': ['HTML', 'CSS', 'JavaScript', 'Design'],
-  'biopic': 'images/fry.jpg'
+  'bioPic': 'images/fry.jpg'
 };
 bio.display = function() {
   var myName = bio.name;
@@ -28,7 +28,7 @@ bio.display = function() {
   var location = bio.contact.location;
   var welcomMessage = bio.welcomeMessage;
   var skills = bio.skills;
-  var image = bio.biopic;
+  var image = bio.bioPic;
   var formattedName = HTMLheaderName.replace("%data%", myName);
   var formattedRole = HTMLheaderRole.replace("%data%", role);
   var formattedMobile = HTMLmobile.replace("%data%", mobile);
@@ -36,11 +36,58 @@ bio.display = function() {
   var formattedGithub = HTMLgithub.replace("%data%", github);
   var formattedTwitter = HTMLtwitter.replace("%data%", twitter);
   var formattedLocation = HTMLlocation.replace("%data%", location);
+  var formattedImage = HTMLbioPic.replace("%data%", image);
   $('#header').prepend(formattedName, formattedRole);
   $('#topContacts').append(formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation);
-
+  $('#topPic').append(formattedImage);
 };
 
+var work = {};
+work.jobs = [
+  {"employer": "Clorox"},
+  {"title": "Automation Technician"},
+  {"location": "Reno, NV"},
+  {"dates": "2013-2014"},
+  {"description": "Journeyman electrician in training for PLC and SCADA factory automation techincian level 1."}
+];
+
+work.display = function(){
+  var firstEmployer = work.jobs.employer;
+  var formattedEmployer = HTMLworkStart.replace("%data%", firstEmployer);
+  $("#workExperience").append(formattedEmployer);
+};
+
+// function Work(employer, title, location, dates, description) {
+//   this.employer = employer;
+//   this.title = title;
+//   this.location = location;
+//   this.dates = dates;
+//   this.description = description;
+// }
+//
+// var clorox = new Work("Clorox", "Automation Technician", "Reno, NV", "2013-1014", "" );
+// clorox.prototype.display = function() {
+//   var newWorkSection = HTMLworkStart;
+//   var formattedEmployer = HTMLworkEmployer.replace("%data%", this.employer);
+// };
+
+// class Work2 {
+//   constructor(employer, title, location, dates, description) {
+//     this.employer = employer;
+//     this.title = title;
+//     this.location = location;
+//     this.dates = dates;
+//     this.description = description;
+//   }
+//   display(){
+//     //DOM manipulation
+//   }
+// }
+//
+// let clorox2 = new Work2();
+// clorox2.employer = "Clorox";
+// clorox2.display();
+//Education section
 var education = {
   'schools': [
     {'name': 'Udacity',
@@ -71,4 +118,5 @@ var education = {
   }]
 };
 bio.display();
+work.display();
 //jose.moreno@reyesic.net
