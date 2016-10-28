@@ -52,13 +52,19 @@ work.jobs = [
   {"title": "Automation Technician"},
   {"location": "Reno, NV"},
   {"dates": "2013-2014"},
-  {"description": "Journeyman electrician in training for PLC and SCADA factory automation techincian level 1."}
+  {"description": "Journeyman electrician in training for factory automation techincian level 1."}
 ];
 
 work.display = function(){
-  var firstEmployer = work.jobs.employer;
-  var formattedEmployer = HTMLworkStart.replace("%data%", firstEmployer);
-  $("#workExperience").append(formattedEmployer);
+  var employer = work.jobs.employer;
+  var title = work.jobs.title;
+  var location = work.jobs.location;
+  var dates = work.jobs.dates;
+  var formattedEmployer = HTMLworkStart.replace("%data%", employer);
+  var formattedTitle = HTMLworkTitle.replace("%data%", title);
+  var formattedLocation = HTMLworkLocation.replace("%data%", location);
+  var formattedDates = HTMLworkDates.replace("%data%", dates);
+  $("#workExperience").append(formattedEmployer, formattedTitle, formattedLocation, formattedDates);
 };
 
 // function Work(employer, title, location, dates, description) {
