@@ -14,8 +14,8 @@ var bio = {
     'twitter': '@charleyblue',
     'location': 'Reno, NV'
   },
-  'welcomeMessage': 'Website creation is the central theme to my business. Helping you Build your online business presence to convey your message to your market is what I will help you achieve. Let\'s build together!',
-  'skills': ['HTML', 'CSS', 'JavaScript', 'Design'],
+  'welcomeMessage': "Welcome to CharleyBlue Dev! Building your online business presence to convey your message to your market is what I will help you achieve.",
+  'skills': ['HTML', 'CSS', 'JavaScript', "Frameworks", 'Design'],
   'bioPic': 'images/fry.jpg'
 };
 bio.display = function() {
@@ -29,6 +29,7 @@ bio.display = function() {
   var welcomMessage = bio.welcomeMessage;
   var skills = bio.skills;
   var image = bio.bioPic;
+  var message = bio.welcomeMessage;
   var formattedName = HTMLheaderName.replace("%data%", myName);
   var formattedRole = HTMLheaderRole.replace("%data%", role);
   var formattedMobile = HTMLmobile.replace("%data%", mobile);
@@ -37,9 +38,12 @@ bio.display = function() {
   var formattedTwitter = HTMLtwitter.replace("%data%", twitter);
   var formattedLocation = HTMLlocation.replace("%data%", location);
   var formattedImage = HTMLbioPic.replace("%data%", image);
+  var formattedMessage = HTMLwelcomeMsg.replace("%data%", message);
+  var formattedSkills = HTMLskills.replace("%data%", skills);
   $('#header').prepend(formattedName, formattedRole);
   $('#topContacts').append(formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation);
   $('#topPic').append(formattedImage);
+  $("#topPic").append(HTMLskillsStart, formattedSkills, formattedMessage);
 };
 
 var work = {};
