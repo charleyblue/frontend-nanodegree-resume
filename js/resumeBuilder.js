@@ -39,33 +39,50 @@ bio.display = function() {
   var formattedLocation = HTMLlocation.replace("%data%", location);
   var formattedImage = HTMLbioPic.replace("%data%", image);
   var formattedMessage = HTMLwelcomeMsg.replace("%data%", message);
-  var formattedSkills = HTMLskills.replace("%data%", skills);
+  // var formattedSkills = HTMLskills.replace("%data%", skills);
   $('#header').prepend(formattedName, formattedRole);
   $('#topContacts').append(formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation);
-  $('#topPic').append(formattedImage);
-  $("#topPic").append(HTMLskillsStart, formattedSkills, formattedMessage);
+  $('#header').append(formattedImage);
+  $("#header").append(HTMLskillsStart, formattedSkills, formattedMessage);
 };
 
 var work = {};
-work.jobs = [
-  {"employer": "Clorox"},
-  {"title": "Automation Technician"},
-  {"location": "Reno, NV"},
-  {"dates": "2013-2014"},
-  {"description": "Journeyman electrician in training for factory automation techincian level 1."}
-];
-
+work.employer = "Clorox";
+work.title = "Automation Tech";
+work.dates = "2013-1014";
+work.description = "Journeyman industrial electrician training for factory automation technician, level 1.";
 work.display = function(){
-  var employer = work.jobs.employer;
-  var title = work.jobs.title;
-  var location = work.jobs.location;
-  var dates = work.jobs.dates;
-  var formattedEmployer = HTMLworkStart.replace("%data%", employer);
-  var formattedTitle = HTMLworkTitle.replace("%data%", title);
-  var formattedLocation = HTMLworkLocation.replace("%data%", location);
-  var formattedDates = HTMLworkDates.replace("%data%", dates);
-  $("#workExperience").append(formattedEmployer, formattedTitle, formattedLocation, formattedDates);
-};
+  var employer = work.employer;
+  $("#workExperience").append(HTMLworkStart);
+  $("#workExperience").append(employer);
+}();
+
+var education = {};
+education["school"] = "Udacity.com";
+education["display"] = function() {
+  var school = education["school"];
+  $("#education").append(HTMLschoolStart);
+  $("#education").append(school);
+}();
+// work.jobs = [
+//   {"employer": "Clorox"},
+//   {"title": "Automation Technician"},
+//   {"location": "Reno, NV"},
+//   {"dates": "2013-2014"},
+//   {"description": "Journeyman electrician in training for factory automation techincian level 1."}
+// ];
+//
+// work.display = function(){
+//   var employer = work.jobs.employer;
+//   var title = work.jobs.title;
+//   var location = work.jobs.location;
+//   var dates = work.jobs.dates;
+//   var formattedEmployer = HTMLworkStart.replace("%data%", employer);
+//   var formattedTitle = HTMLworkTitle.replace("%data%", title);
+//   var formattedLocation = HTMLworkLocation.replace("%data%", location);
+//   var formattedDates = HTMLworkDates.replace("%data%", dates);
+//   $("#workExperience").append(formattedEmployer, formattedTitle, formattedLocation, formattedDates);
+// };
 
 // function Work(employer, title, location, dates, description) {
 //   this.employer = employer;
