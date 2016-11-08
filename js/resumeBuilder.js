@@ -1,149 +1,98 @@
-// $('#main').append("CharleyBlue Dev");
-// var awesomeThoughts = "I am CharleyBlue and I am AWESOME!";
-// console.log(awesomeThoughts);
-// var funThoughts = awesomeThoughts.replace('AWESOME', 'FUN');
-// $('#main').append(funThoughts);
-//make a new bio object
+
 var bio = {
-  'name': 'Charley Blewett',
-  'role': 'Web Developer',
-  'contact': {
-    'mobile': '775-225-9390',
-    'email': 'charley.blewett@gmail.com',
-    'github': 'https://github.com/charleyblue',
-    'twitter': '@charleyblue',
-    'location': 'Reno, NV'
+  "name": "Charley Blewett",
+  "role": "Web Developer",
+  "welcomeMessage": "Welcome to CharleyBlue Dev! Building your online business presence to convey your message to your market is what I will help you achieve.",
+  "bioPic": "images/fry.jpg",
+  "contacts": {
+    "mobile": "775-225-9390",
+    "email": "charley.blewett@gmail.com",
+    "github": "https://github.com/charleyblue",
+    "twitter": "@charleyblue",
+    "location": "Reno, NV"
   },
-  'welcomeMessage': "Welcome to CharleyBlue Dev! Building your online business presence to convey your message to your market is what I will help you achieve.",
-  'skills': ['HTML', 'CSS', 'JavaScript', "Frameworks", 'Design'],
-  'bioPic': 'images/fry.jpg'
-};
-bio.display = function() {
-  var myName = bio.name;
-  var role = bio.role;
-  var mobile = bio.contact.mobile;
-  var email = bio.contact.email;
-  var github = bio.contact.github;
-  var twitter = bio.contact.twitter;
-  var location = bio.contact.location;
-  var welcomMessage = bio.welcomeMessage;
-  var skills = bio.skills;
-  var image = bio.bioPic;
-  var message = bio.welcomeMessage;
-  var formattedName = HTMLheaderName.replace("%data%", myName);
-  var formattedRole = HTMLheaderRole.replace("%data%", role);
-  var formattedMobile = HTMLmobile.replace("%data%", mobile);
-  var formattedEmail = HTMLemail.replace("%data%", email);
-  var formattedGithub = HTMLgithub.replace("%data%", github);
-  var formattedTwitter = HTMLtwitter.replace("%data%", twitter);
-  var formattedLocation = HTMLlocation.replace("%data%", location);
-  var formattedImage = HTMLbioPic.replace("%data%", image);
-  var formattedMessage = HTMLwelcomeMsg.replace("%data%", message);
-  // var formattedSkills = HTMLskills.replace("%data%", skills);
-  $('#header').prepend(formattedName, formattedRole);
-  $('#topContacts').append(formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation);
-  $('#header').append(formattedImage);
-  $("#header").append(HTMLskillsStart, formattedSkills, formattedMessage);
+  "skills": ["HTML", "CSS", "JavaScript", "Bootstrap", "Responsive Layout", "Design"]
 };
 
-var work = {};
-work.employer = "Clorox";
-work.title = "Automation Tech";
-work.dates = "2013-1014";
-work.description = "Journeyman industrial electrician training for factory automation technician, level 1.";
-work.display = function(){
-  var employer = work.employer;
-  $("#workExperience").append(HTMLworkStart);
-  $("#workExperience").append(employer);
-}();
+var work = {
+  "jobs": [
+    {
+      "employer": "Clorox",
+      "title": "Automation Tech",
+      "location": "Reno, NV",
+      "dates": "2013-1014",
+      "description": "Journeyman industrial electrician training for factory automation technician, level 1."
+    },
+    {
+      "employer": "",
+      "title": "",
+      "location": "",
+      "dates": "",
+      "description": ""
+    },
+    {
+      "employer": "",
+      "title": "",
+      "location": "",
+      "dates": "",
+      "description": ""
+    }
+  ]
+};
 
-var education = {};
-education["school"] = "Udacity.com";
-education["display"] = function() {
-  var school = education["school"];
-  $("#education").append(HTMLschoolStart);
-  $("#education").append(school);
-}();
-// work.jobs = [
-//   {"employer": "Clorox"},
-//   {"title": "Automation Technician"},
-//   {"location": "Reno, NV"},
-//   {"dates": "2013-2014"},
-//   {"description": "Journeyman electrician in training for factory automation techincian level 1."}
-// ];
-//
-// work.display = function(){
-//   var employer = work.jobs.employer;
-//   var title = work.jobs.title;
-//   var location = work.jobs.location;
-//   var dates = work.jobs.dates;
-//   var formattedEmployer = HTMLworkStart.replace("%data%", employer);
-//   var formattedTitle = HTMLworkTitle.replace("%data%", title);
-//   var formattedLocation = HTMLworkLocation.replace("%data%", location);
-//   var formattedDates = HTMLworkDates.replace("%data%", dates);
-//   $("#workExperience").append(formattedEmployer, formattedTitle, formattedLocation, formattedDates);
-// };
+var projects = {
+  "projects": [
+    {
+      "title": "",
+      "dates": "",
+      "description": "",
+      "images": []
+    }
+  ]
+};
 
-// function Work(employer, title, location, dates, description) {
-//   this.employer = employer;
-//   this.title = title;
-//   this.location = location;
-//   this.dates = dates;
-//   this.description = description;
-// }
-//
-// var clorox = new Work("Clorox", "Automation Technician", "Reno, NV", "2013-1014", "" );
-// clorox.prototype.display = function() {
-//   var newWorkSection = HTMLworkStart;
-//   var formattedEmployer = HTMLworkEmployer.replace("%data%", this.employer);
-// };
-
-// class Work2 {
-//   constructor(employer, title, location, dates, description) {
-//     this.employer = employer;
-//     this.title = title;
-//     this.location = location;
-//     this.dates = dates;
-//     this.description = description;
-//   }
-//   display(){
-//     //DOM manipulation
-//   }
-// }
-//
-// let clorox2 = new Work2();
-// clorox2.employer = "Clorox";
-// clorox2.display();
-//Education section
 var education = {
-  'schools': [
-    {'name': 'Udacity',
-    'location':'Mountain View, CA',
-    'degree': 'Front End Nano Degree',
-    'majors': ['HTML', 'CSS', 'JavaScript', 'Python', 'Responsive Design', 'SQL'],
-    'dates': '8/2016 - Current',
-    'url': 'http://udacity.com'
-  },
-    {'name': 'New Horizons Computer Learning Center',
-    'location':'Reno, NV',
-    'degree': 'Adobe Design Club and Web Development',
-    'majors': ['Photoshop', 'Illustrator', 'InDesign', 'Acrobat', 'HTML', 'CSS', 'JavaScript', 'PHP'],
-    'dates': '8/2015 - 4/2016',
-    'url': 'http://nhlearninggroup.com/'
-  },
-  {'name': 'George Brown College',
-  'location':'Toronto, Ontario, Canada',
-  'degree': 'Programmable Logic Control Technician',
-  'majors': ['PLC Ladder Logic', 'Timers', 'Counters', 'I/O Racks'],
-  'dates': '8/2016 - Current',
-  'url': 'http://www.georgebrown.ca/'
-
-  }
+  "schools": [
+    {
+      "name": "Reno Collective Boot Camp",
+      "Location": "Reno, NV, US",
+      "degree": "Certificate",
+      "dates": "4/2016 - 6/2016",
+      "url": "http://renocollective.com/",
+      "major": ["Web Dev"]
+    },
+    {
+      "name": "New Horizons CLC",
+      "Location": "Reno, NV, US",
+      "degree": "Cert of Completion",
+      "dates": "9/2015 - 5/2016",
+      "url": "http://nhlearninggroup.com/",
+      "major": ["Adobe", "Web Dev"]
+    },
+    {
+      "name": "George Brown College",
+      "Location": "Toronto, ON, CA",
+      "degree": "Cert of Completion",
+      "dates": "20",
+      "url": "http://www.georgebrown.ca/",
+      "major": ["PLC Technician"]
+    }
   ],
-  'onlineCourses': [{
-
-  }]
+  "onlineCourses":
+  [
+    {
+      "title": "Front End Nanodegree",
+      "school": "Udacity.com",
+      "dates": "8/2016 - Present",
+      "url": "http://udacity.com",
+      "course": ["Front End Nanodegree - FEND"]
+    },
+    {
+      "title": "Miscelaneous computer courses",
+      "school": "Lynda.com",
+      "dates": "2013 - 2015",
+      "url": "https://www.lynda.com/",
+      "course": ["Adobe", "Design", "Web Dev"]
+    }
+  ]
 };
-bio.display();
-work.display();
-//jose.moreno@reyesic.net
