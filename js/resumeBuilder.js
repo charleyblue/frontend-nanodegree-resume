@@ -11,7 +11,7 @@ var bio = {
     "twitter": "@charleyblue",
     "location": "Reno, NV"
   },
-  "skills": ["HTML", "CSS", "JavaScript", "Bootstrap", "Responsive Layout", "Design"]
+  "skills": ["HTML", "CSS", "JavaScript", "Bootstrap", "Responsive Layout"]
 };
 
 var work = {
@@ -96,3 +96,13 @@ var education = {
     }
   ]
 };
+
+var skillsCheck = function() {
+  if (bio.skills.length > 0) {
+    $("#header").append(HTMLskillsStart);
+    for (var i = 0; i < bio.skills.length; i++) {
+      var skill = HTMLskills.replace("%data%", bio.skills[i]);
+      $("#header").append(skill);
+    }
+  }
+}();
