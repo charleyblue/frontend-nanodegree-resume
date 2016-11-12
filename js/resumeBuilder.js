@@ -24,19 +24,26 @@ var work = {
       "description": "Journeyman industrial electrician training for factory automation technician, level 1."
     },
     {
-      "employer": "",
-      "title": "",
-      "location": "",
-      "dates": "",
-      "description": ""
+      "employer": "Aerotek",
+      "title": "Journeyman Electrician",
+      "location": "Reno, NV",
+      "dates": "2013",
+      "description": "Multiple industrial electrician assignments"
     },
     {
-      "employer": "",
-      "title": "",
-      "location": "",
-      "dates": "",
-      "description": ""
+      "employer": "RR Donnelley",
+      "title": "Industrial Electrician",
+      "location": "Reno, NV",
+      "dates": "2007 - 2012",
+      "description": "Factory electrician; troubleshooting, repair, and installations plant-wide and printing presses"
     }
+    // {
+    //   "employer": "",
+    //   "title": "",
+    //   "location": "",
+    //   "dates": "",
+    //   "description": ""
+    // },
   ]
 };
 
@@ -98,11 +105,27 @@ var education = {
 };
 
 var skillsCheck = function() {
-  if (bio.skills.length > 0) {
+  if (bio.skills) {
     $("#header").append(HTMLskillsStart);
-    for (var i = 0; i < bio.skills.length; i++) {
+    for (var i in bio.skills) {
       var skill = HTMLskills.replace("%data%", bio.skills[i]);
       $("#header").append(skill);
+    }
+  }
+}();
+
+var workCheck = function() {
+  if(work.jobs) {
+
+    for(var e in work.jobs) {
+      $("#workExperience").append(HTMLworkStart);
+      var employer = work.jobs[e].employer;
+      console.log(employer);
+      var HTMLemployer = HTMLworkEmployer.replace("%data%", employer);
+      var title = work.jobs[e].title;
+      console.log(title);
+      var HTMLtitle = HTMLworkTitle.replace("%data%", title);
+      $("#work-entry:last").append(HTMLemployer, HTMLtitle);
     }
   }
 }();
