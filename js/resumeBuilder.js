@@ -116,16 +116,12 @@ var skillsCheck = function() {
 
 var workCheck = function() {
   if(work.jobs) {
-
     for(var e in work.jobs) {
       $("#workExperience").append(HTMLworkStart);
-      var employer = work.jobs[e].employer;
-      console.log(employer);
-      var HTMLemployer = HTMLworkEmployer.replace("%data%", employer);
-      var title = work.jobs[e].title;
-      console.log(title);
-      var HTMLtitle = HTMLworkTitle.replace("%data%", title);
-      $("#work-entry:last").append(HTMLemployer, HTMLtitle);
+      var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[e].employer);
+      var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[e].title);
+      var formattedEmployerTitle = formattedEmployer + formattedTitle;
+      $(".work-entry:last").append(formattedEmployerTitle);
     }
   }
 }();
