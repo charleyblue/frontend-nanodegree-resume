@@ -2,7 +2,7 @@
 var bio = {
   "name": "Charley Blewett",
   "role": "Web Developer",
-  "welcomeMessage": "Welcome to CharleyBlue Dev! Building your online business presence to convey your message to your market is what I will help you achieve.",
+  "welcomeMessage": "CharleyBlue Dev! Building your online business presence to convey your message to your market is what I will help you achieve.",
   "bioPic": "images/fry.jpg",
   "contacts": {
     "mobile": "775-225-9390",
@@ -117,7 +117,7 @@ var bioSection = function() {
   $('#topContacts').append(formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation);
   $('#header').append(formattedImage);
   $("#header").append(HTMLskillsStart, formattedSkills, formattedMessage);
-}();
+};
 var skillsCheck = function() {
   if (bio.skills) {
     $("#header").append(HTMLskillsStart);
