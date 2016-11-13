@@ -103,7 +103,21 @@ var education = {
     }
   ]
 };
-
+var bioSection = function() {
+  var formattedName = HTMLheaderName.replace("%data%", bio.name);
+  var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+  var formattedMobile = HTMLmobile.replace("%data%", bio.contact.mobile);
+  var formattedEmail = HTMLemail.replace("%data%", bio.contact.email);
+  var formattedGithub = HTMLgithub.replace("%data%", bio.contact.github);
+  var formattedTwitter = HTMLtwitter.replace("%data%", bio.contact.twitter);
+  var formattedLocation = HTMLlocation.replace("%data%", bio.contact.location);
+  var formattedImage = HTMLbioPic.replace("%data%", bio.bioPic);
+  var formattedMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+  $('#header').prepend(formattedName, formattedRole);
+  $('#topContacts').append(formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation);
+  $('#header').append(formattedImage);
+  $("#header").append(HTMLskillsStart, formattedSkills, formattedMessage);
+}();
 var skillsCheck = function() {
   if (bio.skills) {
     $("#header").append(HTMLskillsStart);
@@ -113,7 +127,6 @@ var skillsCheck = function() {
     }
   }
 }();
-
 var workCheck = function() {
   if(work.jobs) {
     for(var e in work.jobs) {
