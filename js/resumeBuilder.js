@@ -1,9 +1,8 @@
-
+//Build a resume using javascript to insert objects into DOM
+//bio object containing biographical info
 var bio = {
   "name": "Charley Blewett",
   "role": "Web Developer",
-  "welcomeMessage": "CharleyBlue Dev, building your online business presence to convey your message to your market through collaborative web app development. Passionate about web application development, design, and market penetration. Seeking independent contract work or to become a member of a web dev team.",
-  "bioPic": "images/fry.jpg",
   "contacts": {
     "mobile": "775-225-9390",
     "email": "charley.blewett@gmail.com",
@@ -11,9 +10,87 @@ var bio = {
     "twitter": "@charleyblue",
     "location": "Reno, NV"
   },
-  "skills": ["HTML", "CSS", "JavaScript", "Bootstrap", "Responsive Layout"]
+  "welcomeMessage": "I am passionate about web application development, design, and market penetration. Seeking independent contract work or to become a member of a web dev team to build and maintain online business presence through web app development.",
+  "skills": ["HTML", "CSS", "JavaScript", "Bootstrap", "Responsive Layout"],
+  "bioPic": "images/fry.jpg"
+};
+//bio display function to insert objects into document
+bio.display = function(){
+  var formattedName = HTMLheaderName.replace("%data%", bio.name);
+  var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+  var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+  var formattedEmail = HTMLemail.replace("%data%", bio.contacts.email);
+  var formattedGithub = HTMLgithub.replace("%data%", bio.contacts.github);
+  var formattedTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+  var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+  var formattedImage = HTMLbioPic.replace("%data%", bio.bioPic);
+  var formattedMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+  $('#header').prepend(formattedName, formattedRole);
+  $('#topContacts').append(formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation);
+  $('#header').append(formattedImage);
+  $("#header").append(formattedMessage);
+//Check for a skills array and then populate DOM
+  (function() {
+    if (bio.skills) {
+      $("#header").append(HTMLskillsStart);
+      console.log(bio.skills);
+      bio.skills.forEach(function(e) {
+        var skill = HTMLskills.replace("%data%", e);
+        $("#header").append(skill);
+      });
+    }
+  })();
+}();
+
+//education object with schools and online arays
+var education = {
+  "schools": [
+    {
+      "name": "Reno Collective Boot Camp",
+      "location": "Reno, NV, US",
+      "degree": "Certificate",
+      "majors": ["Web Developer"],
+      "dates": "4/2016 - 6/2016",
+      "url": "http://renocollective.com/"
+    },
+    {
+      "name": "New Horizons CLC",
+      "location": "Reno, NV, US",
+      "degree": "Cert of Completion",
+      "majors": ["Adobe", "Web Developer"],
+      "dates": "9/2015 - 5/2016",
+      "url": "http://nhlearninggroup.com/"
+    },
+    {
+      "name": "George Brown College",
+      "location": "Toronto, ON, CA",
+      "degree": "Cert of Completion",
+      "majors": ["PLC Technician"],
+      "dates": "2012",
+      "url": "http://www.georgebrown.ca/"
+    }
+  ],
+  "onlineCourses": [
+    {
+      "title": "Front End Nanodegree",
+      "school": "Udacity.com",
+      "dates": "8/2016 - Present",
+      "url": "http://udacity.com"
+    },
+    {
+      "title": "Miscelaneous computer courses",
+      "school": "Lynda.com",
+      "dates": "2013 - 2015",
+      "url": "https://www.lynda.com/"
+    }
+  ]
+};
+//create an education display function
+education.display = function() {
+
 };
 
+//work object containg an array of work history objects
 var work = {
   "jobs": [
     {
@@ -35,7 +112,7 @@ var work = {
       "title": "Industrial Electrician",
       "location": "Reno, NV",
       "dates": "2007 - 2012",
-      "description": "Factory electrician; troubleshooting, repair, and installations plant-wide and printing presses"
+      "description": "Factory Electrician; troubleshooting, repair, and installations plant-wide, printing presses, hazardous location, substations, switch-gear, Etc. NEC code compliance research and supervision. Many technology upgrade projects to update printing press controls, material handling charging stations, industrial IT."
     }
     // {
     //   "employer": "",
@@ -46,7 +123,27 @@ var work = {
     // },
   ]
 };
+//work display function
+work.display = function() {
+  (function() {
+    if(work.jobs) {
+      for(var e in work.jobs) {
+        $("#workExperience").append(HTMLworkStart);
+        var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[e].employer);
+        var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[e].title);
+        var formattedEmployerTitle = formattedEmployer + formattedTitle;
+        $(".work-entry:last").append(formattedEmployerTitle);
+        var formattedDates = HTMLworkDates.replace("%data%", work.jobs[e].dates);
+        var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[e].location);
+        $(".work-entry:last").append(formattedDates, formattedLocation);
+        var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[e].description);
+        $(".work-entry:last").append(formattedDescription);
+      }
+    }
+  })();
+}();
 
+//projects object containng projects array with project info
 var projects = {
   "projects": [
     {
@@ -57,85 +154,7 @@ var projects = {
     }
   ]
 };
+//projects display method
+projects.display = function() {
 
-var education = {
-  "schools": [
-    {
-      "name": "Reno Collective Boot Camp",
-      "Location": "Reno, NV, US",
-      "degree": "Certificate",
-      "dates": "4/2016 - 6/2016",
-      "url": "http://renocollective.com/",
-      "major": ["Web Dev"]
-    },
-    {
-      "name": "New Horizons CLC",
-      "Location": "Reno, NV, US",
-      "degree": "Cert of Completion",
-      "dates": "9/2015 - 5/2016",
-      "url": "http://nhlearninggroup.com/",
-      "major": ["Adobe", "Web Dev"]
-    },
-    {
-      "name": "George Brown College",
-      "Location": "Toronto, ON, CA",
-      "degree": "Cert of Completion",
-      "dates": "20",
-      "url": "http://www.georgebrown.ca/",
-      "major": ["PLC Technician"]
-    }
-  ],
-  "onlineCourses":
-  [
-    {
-      "title": "Front End Nanodegree",
-      "school": "Udacity.com",
-      "dates": "8/2016 - Present",
-      "url": "http://udacity.com",
-      "course": ["Front End Nanodegree - FEND"]
-    },
-    {
-      "title": "Miscelaneous computer courses",
-      "school": "Lynda.com",
-      "dates": "2013 - 2015",
-      "url": "https://www.lynda.com/",
-      "course": ["Adobe", "Design", "Web Dev"]
-    }
-  ]
 };
-var bioSection = function() {
-  var formattedName = HTMLheaderName.replace("%data%", bio.name);
-  var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-  var formattedMobile = HTMLmobile.replace("%data%", bio.contact.mobile);
-  var formattedEmail = HTMLemail.replace("%data%", bio.contact.email);
-  var formattedGithub = HTMLgithub.replace("%data%", bio.contact.github);
-  var formattedTwitter = HTMLtwitter.replace("%data%", bio.contact.twitter);
-  var formattedLocation = HTMLlocation.replace("%data%", bio.contact.location);
-  var formattedImage = HTMLbioPic.replace("%data%", bio.bioPic);
-  var formattedMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
-  $('#header').prepend(formattedName, formattedRole);
-  $('#topContacts').append(formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation);
-  $('#header').append(formattedImage);
-  $("#header").append(HTMLskillsStart, formattedSkills, formattedMessage);
-};
-// bioSection();
-var skillsCheck = function() {
-  if (bio.skills) {
-    $("#header").append(HTMLskillsStart);
-    for (var i in bio.skills) {
-      var skill = HTMLskills.replace("%data%", bio.skills[i]);
-      $("#header").append(skill);
-    }
-  }
-}();
-var workCheck = function() {
-  if(work.jobs) {
-    for(var e in work.jobs) {
-      $("#workExperience").append(HTMLworkStart);
-      var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[e].employer);
-      var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[e].title);
-      var formattedEmployerTitle = formattedEmployer + formattedTitle;
-      $(".work-entry:last").append(formattedEmployerTitle);
-    }
-  }
-}();
