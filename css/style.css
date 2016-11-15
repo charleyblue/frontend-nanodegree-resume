@@ -116,6 +116,7 @@ a {
 }
 
 .white-text {
+  display: inline-block;
   font-weight: bold;
   color: #fff;
 }

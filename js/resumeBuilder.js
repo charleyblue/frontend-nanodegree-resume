@@ -98,21 +98,21 @@ var work = {
       "title": "Automation Tech",
       "location": "Reno, NV",
       "dates": "2013-1014",
-      "description": "Journeyman industrial electrician training for factory automation technician, level 1."
+      "description": "Journeyman industrial electrician training for factory automation technician, level 1. Trained on Allen Bradely RSLogix 5000 PLC and Wonderware SCADA systems. Researched and wrote the maintenance department training program."
     },
     {
       "employer": "Aerotek",
       "title": "Journeyman Electrician",
       "location": "Reno, NV",
       "dates": "2013",
-      "description": "Multiple industrial electrician assignments"
+      "description": "Multiple industrial electrician assignments; plant electrician for a hot roll mill and journeyman industrial construction electrician for a new dried milk processing plant."
     },
     {
       "employer": "RR Donnelley",
       "title": "Industrial Electrician",
       "location": "Reno, NV",
       "dates": "2007 - 2012",
-      "description": "Factory Electrician; troubleshooting, repair, and installations plant-wide, printing presses, hazardous location, substations, switch-gear, Etc. NEC code compliance research and supervision. Many technology upgrade projects to update printing press controls, material handling charging stations, industrial IT."
+      "description": "Factory Electrician; troubleshooting, repair, and installations plant-wide, printing presses, hazardous location, substations, switch-gear, Etc. NEC code compliance research and supervision. Many technology upgrade projects to update printing press controls, material handling charging stations, industrial IT and other systems."
     }
     // {
     //   "employer": "",
@@ -127,7 +127,7 @@ var work = {
 work.display = function() {
   (function() {
     if(work.jobs) {
-      for(var e in work.jobs) {
+      for(var e = 0; e < work.jobs.length; e++) {
         $("#workExperience").append(HTMLworkStart);
         var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[e].employer);
         var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[e].title);
