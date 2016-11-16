@@ -160,9 +160,9 @@ projects.display = function() {
 
 $("#main").append(internationalizeButton);
 function inName() {
-  var interName = bio.name;
+  var interName;
   if(bio.name) {
-    //console.log(interName);
+    interName = bio.name;
     var nameArray = interName.trim().split(" ");
     //console.log(nameArray);
     nameArray[1] = nameArray[1].toUpperCase();
