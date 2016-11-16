@@ -116,7 +116,6 @@ a {
 }
 
 .white-text {
-  display: inline-block;
   font-weight: bold;
   color: #fff;
 }
@@ -150,6 +149,11 @@ a {
   flex-direction: column;
   flex-wrap: nowrap;
   padding: 10px;
+}
+
+.flex-item {
+  justify-content: space-around;
+  list-style: none;
 }
 
 .center-content {

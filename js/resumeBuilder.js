@@ -10,7 +10,7 @@ var bio = {
     "twitter": "@charleyblue",
     "location": "Reno, NV"
   },
-  "welcomeMessage": "I am passionate about web application development, design, and market penetration. Seeking independent contract work or to become a member of a web dev team to build and maintain online business presence through web app development.",
+  "welcomeMessage": "I am passionate about website application development, design, and market penetration. Seeking an opportunity to become a member of a web development team responsible for building and maintaining online business presence through web applications.",
   "skills": ["HTML", "CSS", "JavaScript", "Bootstrap", "Responsive Layout"],
   "bioPic": "images/fry.jpg"
 };
@@ -33,7 +33,6 @@ bio.display = function(){
   (function() {
     if (bio.skills) {
       $("#header").append(HTMLskillsStart);
-      console.log(bio.skills);
       bio.skills.forEach(function(e) {
         var skill = HTMLskills.replace("%data%", e);
         $("#header").append(skill);
@@ -66,7 +65,7 @@ var education = {
       "location": "Toronto, ON, CA",
       "degree": "Cert of Completion",
       "majors": ["PLC Technician"],
-      "dates": "2012",
+      "dates": "2013",
       "url": "http://www.georgebrown.ca/"
     }
   ],
@@ -158,3 +157,17 @@ var projects = {
 projects.display = function() {
 
 };
+
+$("#main").append(internationalizeButton);
+function inName() {
+  var interName = bio.name;
+  if(bio.name) {
+    //console.log(interName);
+    var nameArray = interName.trim().split(" ");
+    //console.log(nameArray);
+    nameArray[1] = nameArray[1].toUpperCase();
+    nameArray[0] = nameArray[0].slice(0,1) + nameArray[0].slice(1).toLowerCase();
+    interName = nameArray.join(" ");
+  }
+  return interName;
+}
