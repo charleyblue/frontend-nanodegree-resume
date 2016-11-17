@@ -146,19 +146,42 @@ work.display = function() {
 var projects = {
   "projects": [
     {
-      "title": "",
-      "dates": "",
-      "description": "",
-      "images": []
+      "title": "Antique Car Club",
+      "dates": "2016",
+      "description": "A design mockup for an antique car club informational and member website.",
+      "images": ["images/mockUpAntqCar.png"]
+    },
+    {
+      "title": "Surf's Up Real Estate",
+      "dates": "2016",
+      "description": "A design mockup for a real estate condo rental website.",
+      "images": ["images/mockUpSurfsUp.png"]
+    },
+    {
+      "title": "Callbox Mobile Phone",
+      "dates": "2016",
+      "description": "A design mockup for a mobile phone retailer website.",
+      "images": ["images/mockUpCallBox.png"]
     }
   ]
 };
 //projects display method
 projects.display = function() {
-
-};
-
+  if(projects.projects) {
+    projects.projects.forEach(function(p) {
+      $("#projects").append(HTMLprojectStart);
+      var formattedTitle = HTMLprojectTitle.replace("%data%", p.title);
+      var formattedDate = HTMLprojectDates.replace("%data%", p.dates);
+      var formattedDescription = HTMLprojectDescription.replace("%data%", p.description);
+      var formattedImages = HTMLprojectImage.replace("%data%", p.images);
+      $("#projects:last").append(formattedTitle, formattedDate, formattedDescription, formattedImages);
+    });
+  }
+}();
+//append the button from helper.js
 $("#main").append(internationalizeButton);
+//helper.js has a callback make function to run when button is clicked
+//that trims white space, capitalizes first letter first name and all letters of last name.
 function inName() {
   var interName;
   if(bio.name) {
