@@ -146,22 +146,22 @@ work.display = function() {
 var projects = {
   "projects": [
     {
-      "title": "Antique Car Club",
-      "dates": "2016",
-      "description": "A design mockup for an antique car club informational and member website.",
-      "images": ["images/mockUpAntqCar.png"]
-    },
-    {
-      "title": "Surf's Up Real Estate",
+      "title": "- Surf's Up Rentals -",
       "dates": "2016",
       "description": "A design mockup for a real estate condo rental website.",
       "images": ["images/mockUpSurfsUp.png"]
     },
     {
-      "title": "Callbox Mobile Phone",
+      "title": "- Callbox Mobile -",
+      "dates": "2016",
+      "description": "A design mockup for an antique car club informational and member website.",
+      "images": ["images/mockUpCallBox.png"]
+    },
+    {
+      "title": "- Antique Car Club -",
       "dates": "2016",
       "description": "A design mockup for a mobile phone retailer website.",
-      "images": ["images/mockUpCallBox.png"]
+      "images": ["images/mockUpAntqCar.png"]
     }
   ]
 };
@@ -169,12 +169,13 @@ var projects = {
 projects.display = function() {
   if(projects.projects) {
     projects.projects.forEach(function(p) {
-      $("#projects").append(HTMLprojectStart);
       var formattedTitle = HTMLprojectTitle.replace("%data%", p.title);
       var formattedDate = HTMLprojectDates.replace("%data%", p.dates);
       var formattedDescription = HTMLprojectDescription.replace("%data%", p.description);
       var formattedImages = HTMLprojectImage.replace("%data%", p.images);
-      $("#projects:last").append(formattedTitle, formattedDate, formattedDescription, formattedImages);
+      $("#projects").append(HTMLprojectStart);
+      $(".project-entry:last").append(formattedTitle, formattedDate, formattedDescription, formattedImages);
+      //
     });
   }
 }();
