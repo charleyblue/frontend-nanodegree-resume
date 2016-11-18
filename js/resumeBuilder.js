@@ -25,20 +25,18 @@ bio.display = function(){
   var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
   var formattedImage = HTMLbioPic.replace("%data%", bio.bioPic);
   var formattedMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
-  $('#header').prepend(formattedName, formattedRole);
-  $('#topContacts').append(formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation);
-  $('#header').append(formattedImage);
-  $("#header").append(formattedMessage);
+  $("#header").prepend(formattedName, formattedRole);
+  $("#topContacts:last").append(formattedMobile, formattedEmail, formattedGithub, formattedTwitter, formattedLocation);
+  $("#header:last").append(formattedImage);
+  $("#header:last, .welcomeMessage").append(formattedMessage);
 //Check for a skills array and then populate DOM
-  (function() {
-    if (bio.skills) {
-      $("#header").append(HTMLskillsStart);
-      bio.skills.forEach(function(e) {
-        var skill = HTMLskills.replace("%data%", e);
-        $("#header").append(skill);
-      });
-    }
-  })();
+  if (bio.skills) {
+    $("#skills-h3").append(HTMLskillsStart);
+    bio.skills.forEach(function(e) {
+      var skill = HTMLskills.replace("%data%", e);
+      $(".flex-item:last").append(skill);
+    });
+  }
 }();
 
 //education object with schools and online arays
@@ -47,24 +45,24 @@ var education = {
     {
       "name": "Reno Collective Boot Camp",
       "location": "Reno, NV, US",
-      "degree": "Certificate",
-      "majors": ["Web Developer"],
+      "degree": "Certificate of Completion - Web Development",
+      "majors": ["HTML, CSS, JavaScript, Ruby on Rails, AWS, Heroku"],
       "dates": "4/2016 - 6/2016",
       "url": "http://renocollective.com/"
     },
     {
       "name": "New Horizons CLC",
       "location": "Reno, NV, US",
-      "degree": "Cert of Completion",
-      "majors": ["Adobe", "Web Developer"],
+      "degree": "Certificates of Completion - Adobe and Web Developer Tract",
+      "majors": ["Photoshop, Illustrator, InDesign, HTML, CSS, JavaScript"],
       "dates": "9/2015 - 5/2016",
       "url": "http://nhlearninggroup.com/"
     },
     {
       "name": "George Brown College",
       "location": "Toronto, ON, CA",
-      "degree": "Cert of Completion",
-      "majors": ["PLC Technician"],
+      "degree": "Certificate of Completion - PLC Technician",
+      "majors": ["Ladder Logic, RSLogix-500, Relay Logic, Timers, Counters, MCR, Sequencers, Math Functions"],
       "dates": "2013",
       "url": "http://www.georgebrown.ca/"
     }
@@ -84,10 +82,24 @@ var education = {
     }
   ]
 };
-//create an education display function
+//create an education display method
 education.display = function() {
+  education.schools.forEach(function(e){
+    var formattedName = HTMLschoolName.replace("%data%", e.name);
+    var formattedDegree = HTMLschoolDegree.replace("%data%", e.degree);
+    var formattedDates = HTMLschoolDates.replace("%data%", e.dates);
+    var formattedLocation = HTMLschoolLocation.replace("%data%", e.location);
+    var formattedMajors = HTMLschoolMajor.replace("%data%", e.majors);
+    var formattedNameDegree = formattedName + formattedDegree;
+    var formattedTitle = HTMLonlineTitle.replace("%data%", e.title);
+    $("#education").append(HTMLschoolStart);
+    $(".education-entry:last").append(formattedNameDegree, formattedMajors);
+    $(".education-entry:last, .date-text:last").append(formattedDates);
+    $(".education-entry:last, .location-text:last").append(formattedLocation);
+    //$(".education-entry").append();
 
-};
+  });
+}();
 
 //work object containg an array of work history objects
 var work = {
@@ -111,35 +123,26 @@ var work = {
       "title": "Industrial Electrician",
       "location": "Reno, NV",
       "dates": "2007 - 2012",
-      "description": "Factory Electrician; troubleshooting, repair, and installations plant-wide, printing presses, hazardous location, substations, switch-gear, Etc. NEC code compliance research and supervision. Many technology upgrade projects to update printing press controls, material handling charging stations, industrial IT and other systems."
+      "description": "Factory Electrician; troubleshoot, repair, and installations plant-wide, printing presses, hazardous location, substations, switch-gear, Etc. NEC code compliance research and supervision. Many technology upgrade projects to update printing press controls, material handling charging stations, industrial IT and other systems."
     }
-    // {
-    //   "employer": "",
-    //   "title": "",
-    //   "location": "",
-    //   "dates": "",
-    //   "description": ""
-    // },
   ]
 };
 //work display function
 work.display = function() {
-  (function() {
-    if(work.jobs) {
-      for(var e = 0; e < work.jobs.length; e++) {
-        $("#workExperience").append(HTMLworkStart);
-        var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[e].employer);
-        var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[e].title);
-        var formattedEmployerTitle = formattedEmployer + formattedTitle;
-        $(".work-entry:last").append(formattedEmployerTitle);
-        var formattedDates = HTMLworkDates.replace("%data%", work.jobs[e].dates);
-        var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[e].location);
-        $(".work-entry:last").append(formattedDates, formattedLocation);
-        var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[e].description);
-        $(".work-entry:last").append(formattedDescription);
-      }
+  if(work.jobs) {
+    for(var e = 0; e < work.jobs.length; e++) {
+      $("#workExperience").append(HTMLworkStart);
+      var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[e].employer);
+      var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[e].title);
+      var formattedEmployerTitle = formattedEmployer + formattedTitle;
+      $(".work-entry:last").append(formattedEmployerTitle);
+      var formattedDates = HTMLworkDates.replace("%data%", work.jobs[e].dates);
+      var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[e].location);
+      $(".work-entry:last").append(formattedDates, formattedLocation);
+      var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[e].description);
+      $(".work-entry:last").append(formattedDescription);
     }
-  })();
+  }
 }();
 
 //projects object containng projects array with project info
