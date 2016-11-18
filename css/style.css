@@ -144,6 +144,9 @@ a {
   padding: 10px;
 }
 
+.full-width {
+  flex-basis: 100%;
+}
 .flex-column {
   display: flex;
   flex-direction: column;
